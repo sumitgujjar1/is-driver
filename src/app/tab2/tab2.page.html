@@ -1,0 +1,82 @@
+<ion-header [translucent]="true">
+    <ion-toolbar class="header">
+        <ion-title class="ion-text-center">
+            स्वैप्स
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+    <div class="search-results">
+        <div class="summ-card">
+            <ion-grid>
+                <ion-row>
+                    <ion-col class="ion-text-center">
+                        <div class="value">
+                            1
+                        </div>
+                        <div class="label">
+                            आज स्वैप्स
+                        </div>
+                    </ion-col>
+                    <ion-col class="ion-text-center">
+                        <div class="value">
+                            {{weekSwaps}}
+                        </div>
+                        <div class="label">
+                            इस हफ़्ते का स्वैप्स
+                        </div>
+                    </ion-col>
+                    <ion-col class="ion-text-center">
+                        <div class="value">
+                            {{transactionData.length}}
+                        </div>
+                        <div class="label">
+                            कुल स्वैप्स
+                        </div>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+        </div>
+        <div class="trans-card" *ngFor="let x of transactionData">
+            <ion-grid class="ion-no-padding">
+                <ion-row class="ion-no-padding">
+                    <ion-col class="on-justify-content-start ">
+                        <div class="time">{{x.timestamp | date:'medium'}}</div>
+                    </ion-col>
+
+                </ion-row>
+                <ion-row class="tran-detail">
+                    <ion-col class="">
+                        <div class="input-bat">
+                            <ion-icon name="battery-half" color="danger"></ion-icon> <span>{{x.input_bat}}</span>
+                            <ion-icon name="arrow-down-outline"></ion-icon>
+                        </div>
+                        <div class="input-bat">
+                            <ion-icon name="battery-full" color="success"></ion-icon> <span>{{x.output_bat}}</span>
+                            <ion-icon name="arrow-up-outline"></ion-icon>
+                        </div>
+                    </ion-col>
+                    <ion-col class="ion-text-center">
+                        <div class="value">
+                            <ion-text> {{x.name}} </ion-text>
+                        </div>
+                        <div class="label">
+                            स्वैप स्टेशन
+                        </div>
+                    </ion-col>
+                    <ion-col class="ion-text-center">
+                        <div class="value">
+                            <ion-text> ₹ {{x.amount}} </ion-text>
+                        </div>
+                        <div class="label">
+                            कुल राशि
+                        </div>
+                    </ion-col>
+                </ion-row>
+
+            </ion-grid>
+        </div>
+
+    </div>
+</ion-content>

@@ -1,0 +1,49 @@
+<ion-content class="login-page ion-padding">
+    <div class="logo-container">
+        <img src="../../assets/logo.png" />
+        <div>
+            <span>EV</span><span class="tag-text"> बैटरी को 2 मिनट में बदले </span>
+        </div>
+
+    </div>
+    <div class="login-head">
+        अपना खाता लॉग इन करे
+    </div>
+    <form class="login-form">
+        <ion-grid class="ion-no-padding ion-form-input">
+            <ion-row class="form-input" *ngIf="!showOtp">
+                <ion-col>
+                    <ion-item>
+                        <ion-label>
+                            <ion-icon name="phone-portrait"></ion-icon>
+                        </ion-label>
+                        <ion-input required type="number" [(ngModel)]="loginObject.mobile_no" name="mobile" placeholder="मोबाइल नंबर"></ion-input>
+                    </ion-item>
+                </ion-col>
+            </ion-row>
+            <ion-row *ngIf="showOtp">
+                <ion-col>
+                    <ion-item>
+                        <ion-label>
+                            <ion-icon name="lock-closed"></ion-icon>
+                        </ion-label>
+                        <ion-input required type="text" [(ngModel)]="loginObject.otp" name="description" placeholder="अपना OTP बताये"></ion-input>
+                    </ion-item>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+
+        <ion-row class="login-btn" *ngIf="!showOtp">
+            <ion-col size="12" class="ion-no-padding">
+                <ion-button color="primary" expand="block" (click)="logForm()">OTP भेजे</ion-button>
+            </ion-col>
+        </ion-row>
+        <ion-row class="login-btn" *ngIf="showOtp">
+            <ion-col size="12">
+                <ion-button color="success" expand="block" (click)="verifyOtp()">पुष्टि करें</ion-button>
+            </ion-col>
+        </ion-row>
+
+    </form>
+    <div class="copy-text">Copyright &copy; 2021. All Rights Reserved</div>
+</ion-content>

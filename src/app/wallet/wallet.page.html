@@ -1,0 +1,110 @@
+<ion-header [translucent]="true">
+  <ion-toolbar class="header-bg-yellow">
+      <ion-buttons slot="start">
+          <ion-back-button></ion-back-button>
+      </ion-buttons>
+      <ion-title>  
+मेरी पासबुक
+      </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" *ngIf="!showLoader">
+
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content pullingIcon="chevron-down-circle-outline" pullingText="Pull to refresh" refreshingSpinner="circles" refreshingText="Refreshing...">
+    </ion-refresher-content>
+  </ion-refresher>
+
+  <ion-row>
+    
+      <ion-col size="12" class="ion-text-center ion-margin-bottom">
+        <ion-card class="ion-padding-bottom">
+          <div class="ion-margin rupee-text">
+              <ion-text color="primary" class="">₹ {{wallet_sum.balance}} </ion-text>
+          </div>
+          <div class="ion-margin label-text">
+            <ion-text color="dark">आपकी खाता राशि </ion-text>
+          </div>
+          <ion-button color="primary" (click)="presentAlertPrompt()" >अभी जमा करें</ion-button>
+          <div class="payment-block">
+            <img src="../../../assets/images/payment-icons.png" />
+          </div>
+        </ion-card>      
+        </ion-col>
+  </ion-row>
+
+
+  <ion-row>
+    <ion-col size="12" class="ion-padding heading-bg">
+      <h5 class="ion-no-padding ion-no-margin">All Transactions</h5>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col size="12" class="ion-no-padding">
+      <div *ngIf="all_transactions.length > 0">
+        <ion-card *ngFor="let x of all_transactions" class="trans-card ion-no-margin">
+            <ion-row>
+                <ion-col size="2" class="text-center ion-flex bdr-btm">
+                  <div class="circle-trans">
+                    <img src="../../../assets/images/deposit-icon.svg" *ngIf="x.tran_type == 5"/>
+                    <img src="../../../assets/images/withdraw-icon.svg" *ngIf="x.tran_type == 1"/>
+                  </div>
+                    
+                </ion-col>
+                <ion-col size="6" class="driver-name-sec bdr-btm">
+                 
+                  <div>
+                    
+                      <span class="swap-head" *ngIf="x.tran_type == 1">{{x.full_name}}   पर नए स्वैप के लिए भुगतान</span> 
+                    <span class="swap-head"*ngIf="x.tran_type == 5">वॉलेट खाताबुक में जमा</span>
+                    
+                  </div>
+                  
+                  <div class="timestamp">
+                    <ion-icon name="arrow-up-outline"></ion-icon> {{x.timestamp | date : 'dd EEE, hh:mm aa'}}
+                  </div>
+                   
+                </ion-col>
+                <ion-col size="4" class="mobile-sec bdr-btm">
+                  <div *ngIf="x.tran_type == 1">
+                    <div class="swap-head">
+                      ₹{{x.amount}}
+                    </div>
+                    <div class="swap-head">
+                      <div *ngIf="x.mode =='Cash'" class="ion-color-primary">
+                        <ion-icon name="cash-outline" ></ion-icon> नकद
+                      </div>
+                      <div *ngIf="x.mode =='Wallet'">
+                        <ion-icon name="wallet-outline" ></ion-icon> Wallet
+                      </div>
+                    </div>
+                    
+                  </div>
+                  <div *ngIf="x.tran_type == 5">
+                    <div class="swap-head">
+                      <ion-text  *ngIf = "x.status != 'paid'">₹{{x.amount}}</ion-text> 
+                      <ion-text  *ngIf = "x.status == 'paid'">+ ₹{{x.amount}}</ion-text> 
+                    </div>
+
+                    <div class="trans-status">
+                      <ion-text color="danger" *ngIf = "x.status != 'paid'">Failed</ion-text>
+                      <ion-text color="success" *ngIf = "x.status == 'paid'">Success</ion-text>
+
+                    </div>
+                    
+                  </div>
+                 
+                    
+                </ion-col>
+  
+            </ion-row>
+        </ion-card>
+       
+      </div>
+      </ion-col>
+  </ion-row>
+
+ 
+
+</ion-content>

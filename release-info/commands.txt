@@ -1,0 +1,4 @@
+jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore is-drivers.keystore app-release.aab is-drivers
+
+ /Users/sumitkasana/Library/Android/sdk/build-tools/32.0.0/zipalign -v 4 app-release.aab is
+-drivers.aab

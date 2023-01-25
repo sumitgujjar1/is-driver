@@ -1,0 +1,32 @@
+<ion-header>
+    <ion-toolbar class="header">
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="tabs/tab1"></ion-back-button>
+        </ion-buttons>
+        <ion-title>notifications</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+    <div class="" *ngIf="notificationData.length > 0">
+        <div class="trans-card" *ngFor="let x of notificationData;let i = index;">
+            <ion-grid class="ion-no-padding">
+                <ion-row class="ion-no-padding">
+                    <ion-col class="on-justify-content-start ">
+                        <div class="time">{{x.timestamp | date:'medium'}}</div>
+                    </ion-col>
+                </ion-row>
+                <ion-row class="tran-detail">
+                    <ion-col size="1" class="ion-text-center">
+                        {{i+1}}
+                    </ion-col>
+                    <ion-col size="11">
+                        <div class="noti-title">{{x.title}}</div>
+                        <div class="noti-desc">{{x.description}}</div>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+        </div>
+    </div>
+
+</ion-content>

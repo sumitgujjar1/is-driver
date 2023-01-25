@@ -1,0 +1,22 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-button color="medium" (click)="cancel()">Cancel</ion-button>
+        </ion-buttons>
+        <ion-title>{{type}}</ion-title>
+    </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding">
+
+    <ion-row *ngIf="type == 'About'">
+        <ion-col size="12">
+            <h1 class="ion-margin-bottom">About Instaswap</h1>
+        </ion-col>
+        <ion-col size="12">
+            <p>Instaswap is fastest growing battery swapping (Battery as a service) network in India. We are on mission to revolutionize the EV market by making ev 2w & 3w affordable and economical through partnership with fleets.
+            </p>
+            <p>For more infor visit our Website: <a href="https://instaswap.in">https://instaswap.in</a></p>
+        </ion-col>
+    </ion-row>
+
+</ion-content>

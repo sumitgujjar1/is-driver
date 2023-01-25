@@ -1,0 +1,24 @@
+<ion-header>
+    <ion-toolbar text-center class="header">
+        <ion-title>
+            मैप पर देखे
+        </ion-title>
+        <div class="close-btn">
+            <button class="btn-close" (click)="dismiss()"><ion-icon name="close-outline"></ion-icon></button>
+        </div>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+    <div class="map-wrapper">
+        <div id="map_center">
+            <img src="{{userIcon}}" class="user-icon" />
+        </div>
+        <div class="my-google-map">
+            <google-map [options]="mapOptions">
+                <map-marker [position]="marker.position"></map-marker>
+            </google-map>
+        </div>
+    </div>
+</ion-content>

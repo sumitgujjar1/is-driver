@@ -1,0 +1,107 @@
+.btn-row {
+    margin-top: -55px;
+    }
+    .rupee-text {
+        font-size:21px;
+        font-weight: bold;
+    }
+    .label-text {
+        font-size: 14px;
+        font-weight: 500;
+    }
+    .header-bg-yellow {
+        --color: #0e2d62;
+        --opacity: 1;
+        --background: #fff;
+    }
+    .circle {
+        background-color: #FFBE02;
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        text-align: center;
+        margin: auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 5px;
+        font-weight: bold;
+        font-family: "Karla";
+    }
+    .circle-trans {
+        // background-color: #FFBE02;
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        text-align: center;
+        margin: auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: 1px solid #c8c8c8;
+        padding: 5px;
+    
+        img{
+            width:20px;
+        }
+    }
+    .mobile-sec {
+        text-align: right;
+    }
+    .swap-head {
+        color: #222222;
+        font-weight: 600;
+        font-size: 14px;
+        font-family: "Karla", sans-serif;
+        margin-bottom: 5px;
+    }
+    .timestamp {
+        font-size: 12px;
+        color: #999999;
+        padding-top: 5px;
+        ion-icon {
+            vertical-align: middle;
+        }
+    }
+    .commision-text {
+        font-weight: 600;
+        color:green;
+    }
+    .trans-status {
+        position: absolute;
+        right: 0px;
+        bottom: -5px;
+    }
+    .timestamp {
+        font-size:12px
+    }
+    .trans-card {
+        box-shadow:none;
+        // padding-top: 5px;
+        // padding-bottom: 5px;
+        border-bottom: 1px solid #e6e6e6;
+        border-radius: 0px;
+        padding:10px;
+    }
+    .bdr-btm {
+        // border-bottom:1px solid #e6e6e6;
+    }
+    .heading-bg {
+        background: #f4f4f4;
+    }
+    .ion-flex {
+        display: flex;
+    }
+    .swap-head {
+        ion-icon {
+            vertical-align: middle;
+        }
+    }
+
+    .payment-block {
+        img {
+            margin-top: 10px;
+            height: 35px;
+        }
+       
+    }

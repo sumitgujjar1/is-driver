@@ -1,0 +1,189 @@
+.header {
+    --background: #0E2D61;
+    --color: #fff;
+}
+
+.noti-icon {
+    position: absolute;
+    right: 20px;
+    top: 15px;
+    font-size: 21px;
+}
+
+.user-name {
+    font-weight: 500;
+    margin-bottom: 15px;
+    color: #0E2D61;
+    span {
+        font-family: 'NotoSansDevanagari';
+    }
+}
+
+.summ-card {
+    background-color: #0E2D61;
+    border-radius: 8px;
+    width: 100%;
+    color: #fff;
+    .value {
+        font-size: 18px;
+        font-weight: 500;
+        color: #F9D614;
+        margin-bottom: 5px;
+    }
+    .label {
+        font-size: 14px;
+    }
+}
+
+.heading-box {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    .heading {
+        font-family: 'NotoSansDevanagari';
+        font-weight: 600;
+        color: #0E2D61;
+    }
+    .timestamp {
+        font-size: 12px;
+        color: #0E2D61;
+    }
+}
+
+.iot-card {
+    background-color: #fff;
+    border-radius: 8px;
+    width: 100%;
+    color: #0E2D61;
+    .value {
+        font-size: 18px;
+        font-weight: 500;
+        color: #F9D614;
+        margin-bottom: 5px;
+    }
+    .label {
+        font-size: 14px;
+        font-family: 'NotoSansDevanagari';
+        font-weight: 500;
+    }
+}
+
+.secondary-btn {
+    background-color: #F9D614;
+    color: #000;
+    font-family: "NotoSansDevanagari";
+    width: 110px;
+    height: 40px;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: bold;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.trans-card {
+    background-color: #fff;
+    border-radius: 4px;
+    margin-bottom: 15px;
+    position: relative;
+    padding: 10px 5px;
+    .time {
+        background-color: #ddd;
+        border-top-left-radius: 4px;
+        padding-left: 5px;
+        font-size: 11px;
+        line-height: 20px;
+        position: absolute;
+        left: 0px;
+        top: 0px;
+        width: auto;
+        padding-right: 5px;
+    }
+    .txn {
+        font-size: 10px;
+        position: absolute;
+        right: 10px;
+        top: 5px;
+    }
+    .tran-detail {
+        .input-bat {
+            padding-left: 5px;
+            margin-bottom: 5px;
+            ion-icon {
+                margin-right: 5px;
+                vertical-align: middle;
+            }
+            span {
+                color: rgba(0, 0, 0, 0.603);
+                font-weight: 600;
+                font-size: 14px;
+                margin-right: 0px;
+            }
+        }
+        .value {
+            font-size: 21px;
+            font-weight: 500;
+            color: #000;
+            margin-bottom: 5px;
+        }
+        .label {
+            font-size: 14px;
+            font-family: 'NotoSansDevanagari';
+        }
+    }
+}
+
+.alert-card {
+    background-color: #F9D614;
+    color: #000;
+    border-radius: 8px;
+    font-size: 14px;
+    padding: 15px;
+    font-weight: 500;
+    margin-bottom: 10px;
+    line-height: 25px;
+    span {
+        font-family: "NotoSansDevanagari";
+    }
+}
+
+.amount {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.station-name {
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.img-station {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: auto;
+}
+
+.station-timing {
+    margin-top: 5px;
+}
+
+.station-location {
+    font-size: 11px;
+    margin-top: 5px;
+}
+
+.map-text {
+    font-size: 12px;
+}
+
+.dir-icon {
+    background: #ddd;
+    width: 50px;
+    height: 50px;
+    margin: auto;
+    display: flex;
+    border-radius: 30px;
+    justify-content: center;
+    align-items: center;
+}

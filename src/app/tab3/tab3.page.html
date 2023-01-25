@@ -1,0 +1,176 @@
+<ion-header [translucent]="true">
+    <ion-toolbar class="header">
+        <ion-title>
+            प्रोफ़ाइल
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<!-- <ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Tab 3</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  
+</ion-content> -->
+
+
+<ion-content>
+
+
+
+    <div class="profile-page">
+        <div class="profile-info">
+            <div class="circle">
+                <img src="{{userObject.profile_pic}}" />
+            </div>
+
+            <div class="profile-name">{{userObject.name}}</div>
+            <div class="profile-email">सुरक्षा राशि ₹ {{userObject.security_amount}}</div>
+            <div class="profile-phone">{{userObject.mobile_no}}</div>
+            <div class="edit-block">
+                <button class="btn btn-edit">Edit Profile</button>
+            </div>
+        </div>
+        <div class="menu-block">
+            <div class="menu-item" (click)="showQr = true">
+                <ion-grid class="ion-no-padding">
+                    <ion-row>
+                        <ion-col size="1">
+                            <ion-icon name="wallet"></ion-icon>
+                        </ion-col>
+                        <ion-col size="11">
+                            <div class="menu-text">अपना QR कोड देखें</div>
+                            <div class="arrow-icon">
+                                <ion-icon name="chevron-forward-outline"></ion-icon>
+                            </div>
+
+                        </ion-col>
+
+                    </ion-row>
+                </ion-grid>
+            </div>
+
+            <!-- <div class="menu-item">
+                <ion-grid class="ion-no-padding">
+                    <ion-row>
+                        <ion-col size="1">
+                            <ion-icon name="wallet"></ion-icon>
+                        </ion-col>
+                        <ion-col size="11">
+                            <div class="menu-text">वॉलेट बैलेंस</div>
+                            <div class="arrow-icon">
+                                <ion-icon name="chevron-forward-outline"></ion-icon>
+                            </div>
+
+                        </ion-col>
+
+                    </ion-row>
+                </ion-grid>
+            </div> -->
+            <div class="menu-item">
+                <ion-grid class="ion-no-padding">
+                    <ion-row>
+                        <ion-col size="1">
+                            <ion-icon name="swap-horizontal"></ion-icon>
+                        </ion-col>
+                        <ion-col size="11">
+                            <div class="menu-text">सुरक्षा जमा राशि</div>
+                            <div class="arrow-icon">
+                                <ion-icon name="chevron-forward-outline"></ion-icon>
+                            </div>
+
+                        </ion-col>
+
+                    </ion-row>
+                </ion-grid>
+            </div>
+            <div class="menu-item" (click)="openModal('About')">
+                <ion-grid class="ion-no-padding">
+                    <ion-row>
+                        <ion-col size="1">
+                            <ion-icon name="information-circle"></ion-icon>
+                        </ion-col>
+                        <ion-col size="11">
+                            <div class="menu-text">About Us</div>
+                            <div class="arrow-icon">
+                                <ion-icon name="chevron-forward-outline"></ion-icon>
+                            </div>
+
+                        </ion-col>
+
+                    </ion-row>
+                </ion-grid>
+            </div>
+            <div class="menu-item">
+                <ion-grid class="ion-no-padding">
+                    <ion-row>
+                        <ion-col size="1">
+                            <ion-icon name="call"></ion-icon>
+                        </ion-col>
+                        <ion-col size="11">
+                            <div class="menu-text">मदद के लिए हमें कॉल (<a href="tel:7404980806">7404980806</a>) करें</div>
+                            <div class="arrow-icon">
+                                <ion-icon name="chevron-forward-outline"></ion-icon>
+                            </div>
+
+                        </ion-col>
+
+                    </ion-row>
+                </ion-grid>
+            </div>
+            <!-- <ion-button class="menu-item" (click)="logout()">
+                <div class="menu-text">लॉग आउट</div>
+            </ion-button> -->
+
+            <div class="menu-item">
+                <ion-grid class="ion-no-padding">
+                    <ion-row>
+                        <ion-col size="1">
+                            <ion-icon name="log-out-outline"></ion-icon>
+                        </ion-col>
+                        <ion-col size="11">
+                            <button class="logout-btn" (click)="logout()">
+                                <div class="menu-text">लॉग आउट</div>
+                            </button>
+
+                            <div class="arrow-icon">
+                                <ion-icon name="chevron-forward-outline"></ion-icon>
+                            </div>
+
+                        </ion-col>
+
+                    </ion-row>
+                </ion-grid>
+            </div>
+
+            <!-- <div class="menu-item" routerLink="/settings">
+                <div class="row">
+                    <div class="col-1 p-0">
+                        <ion-icon name="information-circle-outline"></ion-icon>
+                    </div>
+                    <div class="col-10">
+                        <div class="menu-text">Settings</div>
+                        <div class="arrow-icon">
+                            <ion-icon name="chevron-forward-outline"></ion-icon>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+        </div>
+    </div>
+
+    <div class="qr-modal" *ngIf="showQr">
+
+
+        <div class="qr-box">
+            <asw-qr-code [value]="qrValue" [size]="size" [centerImageSrc]="centerImageSrc" [centerImageSize]="centerImageSize">
+            </asw-qr-code>
+
+            <button class="btn-primary" (click)="showQr = false">Close</button>
+        </div>
+
+    </div>
+</ion-content>

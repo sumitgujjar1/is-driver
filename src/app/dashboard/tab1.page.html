@@ -1,0 +1,184 @@
+<ion-header>
+    <ion-toolbar class="header">
+        <ion-title class="ion-text-center">
+            <img src="https://instaswap.in/assets/img/logo.png" style="width:150px">
+        </ion-title>
+        <div class="noti-icon" [routerLink]="['/notifications']">
+            <ion-icon name="notifications"></ion-icon>
+        </div>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding" *ngIf="showData">
+
+    <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
+ 
+
+    <!-- Importatnt info block -->
+
+    <div class="alert-card" *ngIf="iotData.soc < 25">
+        Battery Alert : <span>नमस्ते</span> {{userObj.name}}, <span>आपकी बैटरी</span> {{iotData.soc}}% <span>बची है। बैटरी को स्वैप करने के लिए कृपया नजदीकी दुकान पर जाएं.</span>
+    </div>
+
+    <div class="user-name">
+        <span>नमस्ते</span> {{userObj.name}}
+    </div>
+    <div class="summ-card">
+        <ion-grid>
+            <ion-row>
+                <ion-col class="ion-text-center">
+                    <div class="value">
+                        {{today_swaps}}
+                    </div>
+                    <div class="label">
+                        आज स्वैप्स
+                    </div>
+                </ion-col>
+                <ion-col class="ion-text-center">
+                    <div class="value">
+                        {{transactionData.length}}
+                    </div>
+                    <div class="label">
+                        कुल स्वैप्स
+                    </div>
+                </ion-col>
+                <ion-col class="ion-text-center">
+                    <div class="value">
+                        ₹ {{wallet_bal}}
+                    </div>
+                    <div class="label">
+                        वॉलेट बैलेंस
+                    </div>
+                </ion-col>
+            </ion-row>
+            <ion-row class="mt-2">
+                <ion-col class="ion-text-center">
+                    <div class="value" *ngIf="transactionData.length > 0">
+                        {{transactionData[0].name}}
+                    </div>
+                    <div class="label">
+                        आप का स्वैप स्टेशन
+                    </div>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+
+    </div>
+    <div class="heading-box">
+        <span class="heading">बैटरी की जानकारी </span> <span class="timestamp" *ngIf="iotData != null">({{iotData.timestamp * 1000 |  amTimeAgo}})</span>
+    </div>
+    <div class="iot-card" *ngIf="iotData != null">
+        <ion-grid>
+            <ion-row>
+                <ion-col class="ion-text-center">
+                    <div class="value ion-primary">
+                        <ion-text color="primary">
+                            {{iotData.soc}}%
+                        </ion-text>
+                    </div>
+                    <div class="label">
+                        बैटरी बाकी
+                    </div>
+                </ion-col>
+                <ion-col class="ion-text-center">
+                    <div class="value">
+                        <ion-text color="secondary"> {{iotData.bvol}} </ion-text>
+                    </div>
+                    <div class="label">
+                        बैटरी वोल्टेज
+                    </div>
+                </ion-col>
+                <ion-col class="ion-text-center">
+                    <div class="value">
+                        <ion-text color="danger"> {{iotData.tmax}} </ion-text>
+                    </div>
+                    <div class="label">
+                        बैटरी तापमान
+                    </div>
+                </ion-col>
+            </ion-row>
+            <ion-row class="mt-2">
+                <ion-col size="5" class="ion-text-center ion-auto-margin">
+                    <div class="value">
+                        <ion-text color="danger"> {{iotData.device_name}} </ion-text>
+                    </div>
+                    <div class="label">
+                        बैटरी संख्या
+                    </div>
+                </ion-col>
+                <ion-col class="ion-text-center" size="7">
+                    <button class="secondary-btn" (click)="OpenModel(iotData.lati,iotData.long)">  मैप पर देखे </button>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+
+    </div>
+    <div class="heading-box">
+        <span class="heading"> नजदीक स्वैप स्टेशन</span>
+    </div>
+
+    <div class="trans-card" *ngFor="let x of stationsData;">
+
+
+        <ion-grid class="ion-no-padding">
+
+            <ion-row class="tran-detail">
+                <ion-col size="7" class="ion-text-center">
+                    <div class="img-station">
+                        <img src="{{x.cover_pic}}" />
+                    </div>
+                    <div class="station-name">
+                        {{x.full_name}}
+                    </div>
+                    <div class="station-timing">
+                        <ion-badge color="light">
+                            {{x.open_hours}}
+                        </ion-badge>
+                    </div>
+                    <div class="station-location">
+                        <ion-icon name=""></ion-icon> {{x.full_address}}
+                    </div>
+                </ion-col>
+                <ion-col size="5" class="ion-text-center">
+                    <ion-row class="ion-no-margin">
+                        <ion-col size="6">
+                            <div class="value">
+                                <ion-text color="success"> {{x.avail_slots}} </ion-text>
+                            </div>
+                            <div class="label">
+                                उपलब्ध
+                            </div>
+                        </ion-col>
+                        <ion-col size="6">
+                            <div class="value">
+                                <ion-text color="danger"> {{x.non_slots}} </ion-text>
+                            </div>
+                            <div class="label">
+                                चार्ज
+                            </div>
+                        </ion-col>
+                    </ion-row>
+                    <ion-row class="ion-margin-top">
+                        <ion-col size="12" class="ion-text-center" (click)="navigate(x.lat,x.long)">
+                            <div class="dir-icon ion-margin-bottom">
+                                <img src="assets/images/direction.svg " />
+                            </div>
+
+                            <div class="map-text">
+                                मैप पर जाये
+                            </div>
+                            <div class="map-text">
+                                {{x.km}} km.
+                            </div>
+                        </ion-col>
+                    </ion-row>
+                </ion-col>
+
+            </ion-row>
+
+        </ion-grid>
+    </div>
+
+</ion-content>
